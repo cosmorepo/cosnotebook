@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import {
   Nav,
   Container,
@@ -11,6 +11,8 @@ import {
 } from "react-bootstrap"
 
 const Header = () => {
+  const history = useHistory()
+
   return (
     <Navbar bg="primary" expand="lg" variant="dark">
       <Container>
@@ -36,7 +38,14 @@ const Header = () => {
               <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
 
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Log Out</NavDropdown.Item>
+              <NavDropdown.Item
+                onClick={() => {
+                  localStorage.removeItem("userInfo")
+                  history.push("/")
+                }}
+              >
+                Log Out
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
