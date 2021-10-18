@@ -1,9 +1,12 @@
-const express = require("express")
-const notes = require("./data/notes")
-const dotenv = require("dotenv")
-const connectDB = require("./config/db")
-const userRoutes = require("./routes/userRoutes")
-const { errorHandler, notFound } = require("./middlewares/errorMiddleware")
+import express from "express"
+import dotenv from "dotenv"
+import connectDB from "./config/db.js"
+//import colors from "colors"
+import path from "path"
+
+import noteRoutes from "./routes/noteRoutes.js"
+import userRoutes from "./routes/userRoutes.js"
+//import { errorHandler, notFound } from "./middleware/errorMiddleware.js"
 
 const app = express()
 dotenv.config()
@@ -20,9 +23,10 @@ app.use(express.json())
 // })
 
 app.use("/api/users", userRoutes)
+app.use("/api/notes", noteRoutes)
 
-app.use(notFound)
-app.use(errorHandler)
+// app.use(notFound)
+// app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000
 
