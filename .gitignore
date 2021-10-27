@@ -4,4 +4,3 @@ frontend/node_modules
 backend/.env
 
 /build
-/frontend/build
