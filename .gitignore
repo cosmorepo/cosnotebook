@@ -4,3 +4,9 @@ frontend/node_modules
 backend/.env
 
 /build
+
+
+/node_modules
+node_modules/
+/frontend/node_modules/
+.env
