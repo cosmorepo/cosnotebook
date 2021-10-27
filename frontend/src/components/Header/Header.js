@@ -45,19 +45,30 @@ const Header = ({ setSearch }) => {
               />
             </Form>
           </Nav>
-          <Nav>
-            <Nav.Link>
-              <Link to="/mynotes">My Notes</Link>
-            </Nav.Link>
-            <NavDropdown title="john Smith" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
+          {userInfo ? (
+            <Nav>
+              <Nav.Link>
+                <Link to="/mynotes">My Notes</Link>
+              </Nav.Link>
+              <NavDropdown title={userInfo?.name} id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">
+                  My Profile
+                </NavDropdown.Item>
 
-              <NavDropdown.Divider />
-              <NavDropdown.Item onClick={logoutHandler}>
-                Log Out
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+                <NavDropdown.Divider />
+                <NavDropdown.Item onClick={logoutHandler}>
+                  Log Out
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          ) : (
+            <Nav>
+              {" "}
+              <Nav.Link>
+                <Link to="/login">Login</Link>
+              </Nav.Link>
+            </Nav>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
