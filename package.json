@@ -4,6 +4,7 @@
   "description": "<h1 align=\"center\">Welcome to cosnotebook 👋</h1> <p>   <img alt=\"Version\" src=\"https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000\" /> </p>",
   "main": "index.js",
   "scripts": {
+    "start": "node ./backend/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend"
   
