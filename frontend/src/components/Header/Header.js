@@ -12,7 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux"
 import { logout } from "../../actions/userActions"
 
-const Header = () => {
+const Header = ({ setSearch }) => {
   const history = useHistory()
 
   const dispatch = useDispatch()
@@ -41,22 +41,32 @@ const Header = () => {
                 type="text"
                 placeholder="search"
                 className="mr-sm-2"
+                onChange={(e) => setSearch(e.target.value)}
               />
             </Form>
           </Nav>
-          <Nav>
-            <Nav.Link>
-              <Link to="/mynotes">My Notes</Link>
-            </Nav.Link>
-            <NavDropdown title="john Smith" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
+          {userInfo ? (
+            <Nav>
+              <Nav.Link>
+                <Link to="/mynotes">My Notes</Link>
+              </Nav.Link>
+              <NavDropdown title={userInfo?.name} id="basic-nav-dropdown">
+                <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
 
-              <NavDropdown.Divider />
-              <NavDropdown.Item onClick={logoutHandler}>
-                Log Out
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+                <NavDropdown.Divider />
+                <NavDropdown.Item onClick={logoutHandler}>
+                  Log Out
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          ) : (
+            <Nav>
+              {" "}
+              <Nav.Link>
+                <Link to="/login">Login</Link>
+              </Nav.Link>
+            </Nav>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
