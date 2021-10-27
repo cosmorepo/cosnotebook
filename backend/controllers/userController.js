@@ -66,7 +66,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
-      pic: updatedUser._id,
+      pic: updatedUser.pic,
       token: generateToken(updatedUser._id),
     })
   } else {
